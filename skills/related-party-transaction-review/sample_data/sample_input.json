@@ -1,0 +1,86 @@
+{
+  "_填表说明": {
+    "怎么用": "复制本文件另存为 facts.json，按本机构实际情况改写 facts 下的取值，然后运行 scripts/run_check.py 即可。",
+    "取值规则": {
+      "true": "该情形存在／该动作已完成",
+      "false": "该情形不存在／该动作未完成",
+      "null": "未知或资料未取得 —— 对应规则会标记为「待确认」，不计入评分，不会被算作通过，也不会被算作命中"
+    },
+    "填写顺序": [
+      "先填 identification（有没有名单、名单准不准），这是后面所有判断的基础",
+      "再填 transaction（有没有交易、认定对不对）",
+      "再填 procedure（回避、决策、定价三件事做没做）",
+      "再填 disclosure（公开与报送两个时限节点）",
+      "最后填 mechanism（制度、岗位、损失与责任）"
+    ],
+    "分组说明": {
+      "org": "机构信息，用于报告抬头，不参与评分。",
+      "facts.identification": "关联方识别与登记。has_related_party 指本组织是否存在关联方，直接影响名单报送义务的判定。",
+      "facts.transaction": "交易判定。resource_transfer 指与关联方之间是否发生资源、服务或义务的转移；recognized_as_related 指本组织是否已将其认定为关联交易。",
+      "facts.procedure": "决策、回避与定价程序。多数规则仅在 recognized_as_related 为 true 时评估。",
+      "facts.disclosure": "公开与报送。两个节点彼此独立：交易发生后三十日内公开；每年 5 月 31 日前报送关联方名单。",
+      "facts.mechanism": "内部机制与责任。property_loss 指是否因关联交易造成慈善财产损失。"
+    },
+    "注意": "本模板仅为结构化采集表，不构成法律意见。具体交易的定性以登记管理机关与专业机构的意见为准。"
+  },
+  "org": {
+    "name": "示例基金会",
+    "org_type": "基金会",
+    "credit_code": "统一社会信用代码（示例占位）",
+    "authority": "登记管理机关（示例占位）",
+    "period": "2025 年度",
+    "preparer": "秘书处 / 合规岗",
+    "prepared_at": "2026-03-10"
+  },
+  "facts": {
+    "identification": {
+      "list_established": true,
+      "three_scopes_checked": true,
+      "key_mgmt_and_family_included": false,
+      "major_donor_judged": true,
+      "has_project_or_fund_level": true,
+      "project_donor_identified": null,
+      "update_owner_assigned": false,
+      "has_related_party": true
+    },
+    "transaction": {
+      "occurred": true,
+      "resource_transfer": true,
+      "recognized_as_related": true,
+      "deemed_not_related_because_no_payment": false,
+      "beneficiary_related_designated": false,
+      "close_relative_transaction": false,
+      "type_classified": true,
+      "pure_benefit": true,
+      "full_procedure_for_pure_benefit": true
+    },
+    "procedure": {
+      "avoidance_done": true,
+      "avoidance_recorded": false,
+      "collective_decision": true,
+      "resolution_document": true,
+      "pricing_only_negotiated": true,
+      "overpriced_purchase": false,
+      "underpriced_disposal": false,
+      "dedicated_body": false
+    },
+    "disclosure": {
+      "disclosed_within_30d": false,
+      "annual_list_filed": true,
+      "skip_filing_because_no_transaction": false,
+      "note_four_elements_complete": false,
+      "pricing_policy_disclosed": false,
+      "three_sources_consistent": false,
+      "basic_info_disclosed_within_30d": true,
+      "correction_needed": false,
+      "correction_published": false
+    },
+    "mechanism": {
+      "policy_established": true,
+      "disclosure_owner_assigned": false,
+      "charter_threshold_defined": false,
+      "property_loss": null,
+      "recovery_action": null
+    }
+  }
+}

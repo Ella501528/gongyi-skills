@@ -1,0 +1,76 @@
+{
+  "_说明": "本文件既是脚本输入样例，也是字段填表说明。cofundraisings 为合作募捐项目清单；org.has_public_fundraising_qualification 指本机构是否具公开募捐资格。带 '_' 前缀的键不参与判定。项目均为虚构示例。",
+  "org": { "name": "某公益基金会（示例）", "has_public_fundraising_qualification": true },
+  "cofundraisings": [
+    {
+      "id": "F01", "name": "乡村助学联合募捐", "partner_name": "甲企业（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": true,
+      "agreement_signed": true,
+      "agreement_fields": ["募捐目的", "募捐方案", "款物用途", "各方权利义务"],
+      "partner_evaluated": true, "supervised": true,
+      "funds_to_org_account": true, "scheme_disclosed": true, "expenses_within_scheme": true
+    },
+    {
+      "id": "F02", "name": "企业配捐合作募捐", "partner_name": "乙企业（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": false,
+      "agreement_signed": true,
+      "agreement_fields": ["募捐目的", "募捐方案", "款物用途", "各方权利义务"],
+      "partner_evaluated": true, "supervised": true,
+      "funds_to_org_account": true, "scheme_disclosed": true, "expenses_within_scheme": true
+    },
+    {
+      "id": "F03", "name": "社区联合劝募", "partner_name": "丙社区组织（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": true,
+      "agreement_signed": false, "agreement_fields": [],
+      "partner_evaluated": true, "supervised": true,
+      "funds_to_org_account": true, "scheme_disclosed": true, "expenses_within_scheme": true
+    },
+    {
+      "id": "F04", "name": "线上联合劝募", "partner_name": "丁文化（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": true,
+      "agreement_signed": true, "agreement_fields": ["募捐目的", "募捐方案"],
+      "partner_evaluated": true, "supervised": true,
+      "funds_to_org_account": true, "scheme_disclosed": true, "expenses_within_scheme": true
+    },
+    {
+      "id": "F05", "name": "企业合作募捐", "partner_name": "戊集团（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": true,
+      "agreement_signed": true,
+      "agreement_fields": ["募捐目的", "募捐方案", "款物用途", "各方权利义务"],
+      "partner_evaluated": false, "supervised": true,
+      "funds_to_org_account": true, "scheme_disclosed": true, "expenses_within_scheme": true
+    },
+    {
+      "id": "F06", "name": "公益跑联合募捐", "partner_name": "己体育（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": true,
+      "agreement_signed": true,
+      "agreement_fields": ["募捐目的", "募捐方案", "款物用途", "各方权利义务"],
+      "partner_evaluated": true, "supervised": false,
+      "funds_to_org_account": true, "scheme_disclosed": true, "expenses_within_scheme": true
+    },
+    {
+      "id": "F07", "name": "义卖联合募捐", "partner_name": "庚商贸（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": true,
+      "agreement_signed": true,
+      "agreement_fields": ["募捐目的", "募捐方案", "款物用途", "各方权利义务"],
+      "partner_evaluated": true, "supervised": true,
+      "funds_to_org_account": false, "scheme_disclosed": true, "expenses_within_scheme": true
+    },
+    {
+      "id": "F08", "name": "直播联合募捐", "partner_name": "辛传媒（示例）",
+      "partner_has_qualification": false, "partner_relying_on_qualified": true,
+      "agreement_signed": true,
+      "agreement_fields": ["募捐目的", "募捐方案", "款物用途", "各方权利义务"],
+      "partner_evaluated": true, "supervised": true,
+      "funds_to_org_account": true, "scheme_disclosed": false, "expenses_within_scheme": true
+    },
+    {
+      "id": "F09", "name": "定向联合募捐", "partner_name": "壬基金会（示例）",
+      "partner_has_qualification": true, "partner_relying_on_qualified": true,
+      "agreement_signed": true,
+      "agreement_fields": ["募捐目的", "募捐方案", "款物用途", "各方权利义务"],
+      "partner_evaluated": true, "supervised": true,
+      "funds_to_org_account": true, "scheme_disclosed": true, "expenses_within_scheme": false
+    }
+  ]
+}

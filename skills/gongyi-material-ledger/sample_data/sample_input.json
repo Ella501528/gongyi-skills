@@ -1,0 +1,63 @@
+{
+  "_说明": "本文件既是脚本输入样例，也是字段填表说明。字段含义见 SKILL.md 第一至五节；带 '_' 前缀的键不参与判定。物资、供应商均为虚构示例。",
+  "project": {
+    "name": "某县乡村女孩助学金（示例）",
+    "procurement_threshold": 5000,
+    "beneficiary_ids": ["B001", "B002", "B003", "B004", "B005", "B006", "B007", "B008"]
+  },
+  "materials": [
+    {
+      "id": "M001", "name": "书包", "spec": "中号", "unit": "个",
+      "supplier": "××文具（示例）", "supplier_related_to_operator": false,
+      "unit_price": 60, "qty_in": 200, "amount": 12000,
+      "invoice_no": "INV-2026-001", "inspection_signer": "王××",
+      "procurement_method": "三方比价", "quotes": 3,
+      "out_records": [
+        { "date": "2026-06-10", "receiver_id": "B001", "receiver": "张某某", "qty": 1, "signer": "张某某", "purpose": "助学金发放配套" },
+        { "date": "2026-06-10", "receiver_id": "B002", "receiver": "李某某", "qty": 1, "signer": "李某某", "purpose": "助学金发放配套" },
+        { "date": "2026-06-11", "receiver_id": "B003", "receiver": "王某某", "qty": 196, "signer": "学校经办人", "purpose": "批量发放至各校" }
+      ],
+      "qty_remaining": 0,
+      "remaining_disposal": ""
+    },
+    {
+      "id": "M002", "name": "文具盒", "spec": "双层", "unit": "个",
+      "supplier": "××百货（示例）", "supplier_related_to_operator": true,
+      "unit_price": 60, "qty_in": 100, "amount": 6000,
+      "invoice_no": "INV-2026-002", "inspection_signer": "刘××",
+      "procurement_method": "单一询价", "quotes": 1,
+      "out_records": [
+        { "date": "2026-06-12", "receiver_id": "B004", "receiver": "刘某某", "qty": 50, "signer": "刘某某", "purpose": "批量发放" },
+        { "date": "2026-06-12", "receiver_id": "B005", "receiver": "陈某某", "qty": 50, "signer": "陈某某", "purpose": "批量发放" }
+      ],
+      "qty_remaining": 0,
+      "remaining_disposal": ""
+    },
+    {
+      "id": "M003", "name": "口罩", "spec": "一次性医用", "unit": "只",
+      "supplier": "××医疗用品（示例）", "supplier_related_to_operator": false,
+      "unit_price": 0.5, "qty_in": 500, "amount": 300,
+      "invoice_no": "INV-2026-003", "inspection_signer": "赵××",
+      "procurement_method": "单一询价", "quotes": 1,
+      "out_records": [
+        { "date": "2026-06-15", "receiver_id": "B006", "receiver": "杨某某", "qty": 200, "signer": "杨某某", "purpose": "健康防护包" },
+        { "date": "2026-06-15", "receiver_id": "B007", "receiver": "赵某某", "qty": 200, "signer": "", "purpose": "健康防护包" }
+      ],
+      "qty_remaining": 100,
+      "remaining_disposal": ""
+    },
+    {
+      "id": "M004", "name": "保温杯", "spec": "", "unit": "个",
+      "supplier": "××商贸（示例）", "supplier_related_to_operator": false,
+      "unit_price": 45, "qty_in": 50, "amount": 2250,
+      "invoice_no": "", "inspection_signer": "周××",
+      "procurement_method": "单一询价", "quotes": 1,
+      "out_records": [
+        { "date": "2026-06-18", "receiver_id": "B009", "receiver": "周某某", "qty": 30, "signer": "周某某", "purpose": "鼓励奖" },
+        { "date": "2026-06-18", "receiver_id": "B010", "receiver": "吴某某", "qty": 30, "signer": "吴某某", "purpose": "鼓励奖" }
+      ],
+      "qty_remaining": 0,
+      "remaining_disposal": ""
+    }
+  ]
+}

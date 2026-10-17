@@ -1,0 +1,104 @@
+{
+  "_说明": "本文件既是脚本输入样例，也是字段填表说明。字段含义见 SKILL.md 第一节；带 '_' 前缀的键不参与判定。本项目为虚构示例，人名与地名均为占位。",
+  "project": {
+    "name": "某县乡村女孩助学金（示例）",
+    "target_group": {
+      "label": "乡村困境家庭女孩",
+      "sex": "女",
+      "age_min": 12,
+      "age_max": 18,
+      "regions": ["甲县"]
+    },
+    "fields_purpose": {
+      "phone": "发放通知与回访",
+      "region": "核对资助区域"
+    }
+  },
+  "extended_fields": ["id_full"],
+  "beneficiaries": [
+    {
+      "id": "B001", "name": "张某某", "sex": "女", "age": 14, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明 + 入户核实",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "bank",
+      "signed": true, "minor": true, "guardian_consent": true,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B002", "name": "李某某", "sex": "女", "age": 15, "region": "",
+      "qualification": "事实无人抚养", "qualification_basis": "民政认定",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "signoff",
+      "signed": true, "minor": true, "guardian_consent": true,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B003", "name": "王某某", "sex": "女", "age": 13, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "signoff",
+      "signed": true, "minor": true, "guardian_consent": true,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B004", "name": "刘某某", "sex": "女", "age": 12, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "signoff",
+      "signed": true, "minor": true, "guardian_consent": false,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B005", "name": "陈某某", "sex": "女", "age": 16, "region": "甲县",
+      "qualification": "脱贫不稳定户", "qualification_basis": "乡镇台账",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "none",
+      "signed": false, "minor": false, "guardian_consent": null,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B006", "name": "杨某某", "sex": "女", "age": 14, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "实物", "payout_amount": 1, "payout_evidence": "none",
+      "signed": false, "minor": true, "guardian_consent": true,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B007", "name": "赵某某", "sex": "女", "age": 17, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "bank",
+      "signed": true, "minor": false, "guardian_consent": null,
+      "status": "退出", "change_approved": null
+    },
+    {
+      "id": "B008", "name": "孙某某", "sex": "男", "age": 15, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "bank",
+      "signed": true, "minor": true, "guardian_consent": true,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B009", "name": "周某某", "sex": "男", "age": 20, "region": "乙县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "bank",
+      "signed": true, "minor": false, "guardian_consent": null,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B010", "name": "吴某某", "sex": "男", "age": 16, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "signoff",
+      "signed": true, "minor": false, "guardian_consent": null,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B011", "name": "郑某某", "sex": "男", "age": 19, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "bank",
+      "signed": true, "minor": false, "guardian_consent": null,
+      "status": "在册", "change_approved": null
+    },
+    {
+      "id": "B012", "name": "冯某某", "sex": "男", "age": 19, "region": "甲县",
+      "qualification": "低保家庭", "qualification_basis": "村委证明",
+      "payout": "现金", "payout_amount": 1000, "payout_evidence": "signoff",
+      "signed": true, "minor": false, "guardian_consent": null,
+      "status": "在册", "change_approved": null
+    }
+  ]
+}

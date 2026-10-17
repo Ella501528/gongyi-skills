@@ -1,0 +1,37 @@
+{
+ "skill": "gongyi-role-lookup",
+ "queries": [
+  {
+   "args": [
+    "--item",
+    "章程"
+   ],
+   "exit": 0,
+   "output_chars": 76
+  },
+  {
+   "args": [
+    "--role",
+    "秘书长"
+   ],
+   "exit": 0,
+   "output_chars": 315
+  },
+  {
+   "args": [
+    "--q",
+    "财务"
+   ],
+   "exit": 0,
+   "output_chars": 2012
+  },
+  {
+   "args": [
+    "--item",
+    "不存在的活"
+   ],
+   "exit": 0,
+   "output_chars": 26
+  }
+ ]
+}

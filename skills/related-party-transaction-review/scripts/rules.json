@@ -1,0 +1,385 @@
+{
+  "meta": {
+    "name": "慈善组织关联方与关联交易合规体检基线",
+    "version": "2026.1",
+    "scope": "面向基金会、社会团体、社会服务机构等慈善组织；依据现行有效文本编制",
+    "severity_weight": { "高": 3, "中": 2, "低": 1 },
+    "categories": {
+      "identification": "关联方识别与登记",
+      "transaction": "交易判定",
+      "procedure": "决策与定价程序",
+      "disclosure": "公开与报送",
+      "mechanism": "内部机制与责任"
+    },
+    "version_note": "《基金会管理条例（修订草案）》已于 2026-09-11 经国务院常务会议审议通过，尚未正式公布施行。本基线涉及该条例的条款一律以现行《基金会管理条例》（2004 年国务院令第 400 号）为准，不据草案作义务判断；条例正式公布后须逐项重新核对条次。",
+    "usage": "字段缺失时规则状态为「待确认」，不计入评分分母；补全后复评即可。本基线为合规自查辅助工具，不构成法律意见。"
+  },
+  "rules": [
+    {
+      "id": "ID-001",
+      "category": "identification",
+      "severity": "高",
+      "title": "未建立关联方名单",
+      "desc": "尚未梳理形成本组织的关联方名单，后续识别、回避、公开与报送均无基础数据源。",
+      "condition": { "type": "flag_false", "path": "facts.identification.list_established" },
+      "law": "《慈善组织信息公开办法》第 15 条（每年 5 月 31 日前报送关联方名单及关联关系说明）；《民间非营利组织会计制度》（财会〔2024〕25 号）第 89 条。",
+      "fix": "以三套口径取并集梳理关联方，形成电子化名单，字段至少包含关联方名称、身份类别、关系说明、判定依据、识别日期、更新责任人。",
+      "fields": ["facts.identification.list_established"]
+    },
+    {
+      "id": "ID-002",
+      "category": "identification",
+      "severity": "高",
+      "title": "未按三套口径取并集",
+      "desc": "只按慈善法或只按会计制度一套口径识别，遗漏发起人、主要捐赠人、被投资方或存在控制、共同控制、重大影响关系的主体。",
+      "condition": { "type": "flag_false", "path": "facts.identification.three_scopes_checked" },
+      "law": "《慈善法》第 14 条；《慈善组织信息公开办法》第 4 条；《民间非营利组织会计制度》（财会〔2024〕25 号）第 89 条。",
+      "fix": "按慈善法第 14 条、信息公开办法第 4 条、会计制度第 89 条三套口径分别比对后取并集，保留比对底稿。",
+      "fields": ["facts.identification.three_scopes_checked"]
+    },
+    {
+      "id": "ID-003",
+      "category": "identification",
+      "severity": "高",
+      "title": "关键管理人员及关系密切家庭成员未纳入",
+      "desc": "负责人、理事、监事、分支（代表）机构负责人及其关系密切的家庭成员未纳入关联方名单。",
+      "condition": { "type": "flag_false", "path": "facts.identification.key_mgmt_and_family_included" },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 89 条第六项至第八项。",
+      "fix": "将关键管理人员及其关系密切的家庭成员，以及上述人员控制、共同控制或施加重大影响的企业与其设立的民间非营利组织一并纳入名单。",
+      "fields": ["facts.identification.key_mgmt_and_family_included"]
+    },
+    {
+      "id": "ID-004",
+      "category": "identification",
+      "severity": "中",
+      "title": "主要捐赠人未判定",
+      "desc": "未按占比或章程规定的重大资金标准判定主要捐赠人，导致该类关联方漏识别。",
+      "condition": { "type": "flag_false", "path": "facts.identification.major_donor_judged" },
+      "law": "《慈善法》第 14 条；《民间非营利组织会计制度》（财会〔2024〕25 号）第 89 条。占比 30% 系实务参考线，具体标准以现行公布的规定为准。",
+      "fix": "按两个角度判定：单一捐赠人资金占组织资金规模比例较高（实务常以 30% 为参考）；或捐赠数额高于章程规定的重大资金数额。判定过程留档。",
+      "fields": ["facts.identification.major_donor_judged"]
+    },
+    {
+      "id": "ID-005",
+      "category": "identification",
+      "severity": "中",
+      "title": "专项基金或项目层面主要捐赠人未单独识别",
+      "desc": "仅在组织层面识别主要捐赠人，未识别专项基金、项目层面各自的捐赠人。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.identification.has_project_or_fund_level" },
+        { "type": "flag_false", "path": "facts.identification.project_donor_identified" }
+      ] },
+      "law": "《慈善法》第 14 条；《民间非营利组织会计制度》（财会〔2024〕25 号）第 89 条。",
+      "fix": "对设有专项基金或独立项目的，逐个识别该基金或项目的主要捐赠人，并在与该基金或项目有关的交易中按关联方办理。",
+      "fields": ["facts.identification.has_project_or_fund_level", "facts.identification.project_donor_identified"]
+    },
+    {
+      "id": "ID-006",
+      "category": "identification",
+      "severity": "低",
+      "title": "名单未指定更新责任人与更新频率",
+      "desc": "关联方名单已建立但未明确由谁维护、多久更新一次，容易长期失效。",
+      "condition": { "type": "flag_false", "path": "facts.identification.update_owner_assigned" },
+      "law": "《慈善组织信息公开办法》第 15 条（关联方名单须持续准确以支持年度报送）。",
+      "fix": "指定更新责任人，明确更新触发条件（理事监事变动、新增大额捐赠、新设被投资方）与最低更新频率。",
+      "fields": ["facts.identification.update_owner_assigned"]
+    },
+    {
+      "id": "TR-001",
+      "category": "transaction",
+      "severity": "高",
+      "title": "存在资源、服务或义务转移但未认定为关联交易",
+      "desc": "与关联方之间已发生资源、服务或义务转移，却未按关联交易履行后续程序。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.transaction.resource_transfer" },
+        { "type": "flag_false", "path": "facts.transaction.recognized_as_related" }
+      ] },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 90 条（关联方交易指关联方之间转移资源、服务或义务的行为，不论是否收取价款）。",
+      "fix": "先确认对方是否构成关联方；构成即按关联交易补做回避、决策、定价与公开披露，并补留审查记录。",
+      "fields": ["facts.transaction.resource_transfer", "facts.transaction.recognized_as_related"]
+    },
+    {
+      "id": "TR-002",
+      "category": "transaction",
+      "severity": "高",
+      "title": "以未收取价款为由认定不构成关联交易",
+      "desc": "以免费、无偿为理由排除关联交易认定，属口径错误。",
+      "condition": { "type": "flag_true", "path": "facts.transaction.deemed_not_related_because_no_payment" },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 90 条（不论是否收取价款）。",
+      "fix": "纠正认定口径：收款与否不影响是否构成关联交易，只影响纯获利益情形下的程序简化，仍应在财报中登记披露。",
+      "fields": ["facts.transaction.deemed_not_related_because_no_payment"]
+    },
+    {
+      "id": "TR-003",
+      "category": "transaction",
+      "severity": "高",
+      "title": "指定或变相指定利害关系人为受益人",
+      "desc": "将捐赠人、慈善组织管理人员的利害关系人指定为受益人，属法定违规情形。",
+      "condition": { "type": "flag_true", "path": "facts.transaction.beneficiary_related_designated" },
+      "law": "《慈善法》第 110 条第二项。",
+      "fix": "立即停止该受益安排，调整受益人选定程序并留痕；已发生的按主管部门要求整改，重大事项请专业机构复核。",
+      "fields": ["facts.transaction.beneficiary_related_designated"]
+    },
+    {
+      "id": "TR-004",
+      "category": "transaction",
+      "severity": "高",
+      "title": "与理事、监事的近亲属发生交易",
+      "desc": "与理事、监事的近亲属发生交易行为，包括向其提供资助，属禁止情形。",
+      "condition": { "type": "flag_true", "path": "facts.transaction.close_relative_transaction" },
+      "law": "《慈善法》第 14 条；《慈善组织信息公开办法》第 4 条。理事、监事的近亲属不得与慈善组织发生任何交易行为。",
+      "fix": "终止交易并追回已支付资金；在关联方名单中标注禁止交易范围，交易前增加近亲属比对环节。",
+      "fields": ["facts.transaction.close_relative_transaction"]
+    },
+    {
+      "id": "TR-005",
+      "category": "transaction",
+      "severity": "中",
+      "title": "交易类型未归入九类常见类型",
+      "desc": "已发生关联交易但未按常见类型归类，财报附注与公开文本要素容易缺项。慈善信托委托与受托、关键管理人员薪酬为易漏两类。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.transaction.recognized_as_related" },
+        { "type": "flag_false", "path": "facts.transaction.type_classified" }
+      ] },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 90 条（九类常见交易类型）。",
+      "fix": "按九类常见类型逐笔归类：购销商品及资产、提供或接受服务、提供或接受捐赠、设立或受托管理慈善信托、提供资金、租赁、代理、许可协议、代结算、关键管理人员薪酬。",
+      "fields": ["facts.transaction.recognized_as_related", "facts.transaction.type_classified"]
+    },
+    {
+      "id": "TR-006",
+      "category": "transaction",
+      "severity": "低",
+      "title": "纯获利益行为被要求履行全部程序",
+      "desc": "关联方免费提供服务等本组织纯获利益的行为，被要求完整履行回避决策与信息公开，不当增加组织负担。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.transaction.pure_benefit" },
+        { "type": "flag_true", "path": "facts.transaction.full_procedure_for_pure_benefit" }
+      ] },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 90 条。纯获利益行为的简化处理属实务口径，具体以现行公布的规定与本组织制度为准。",
+      "fix": "调整为在内部财务会计报表中登记披露即可；同时在制度中写明该口径，避免执行不一致。",
+      "fields": ["facts.transaction.pure_benefit", "facts.transaction.full_procedure_for_pure_benefit"]
+    },
+    {
+      "id": "PR-001",
+      "category": "procedure",
+      "severity": "高",
+      "title": "关联方未回避该交易决策",
+      "desc": "关联方参与了与该交易有关的决策，违反决策回避要求。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.transaction.recognized_as_related" },
+        { "type": "flag_false", "path": "facts.procedure.avoidance_done" }
+      ] },
+      "law": "《慈善法》第 14 条（关联方不得参与本组织有关该交易行为的决策）。",
+      "fix": "重新审议该事项，关联方回避后再行表决；已作出的决议按章程与主管部门要求处理，并完整留痕。",
+      "fields": ["facts.transaction.recognized_as_related", "facts.procedure.avoidance_done"]
+    },
+    {
+      "id": "PR-002",
+      "category": "procedure",
+      "severity": "高",
+      "title": "未经决策机构集体审议",
+      "desc": "以个别负责人审批替代理事会或专门设立的关联交易决策机构审议。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.transaction.recognized_as_related" },
+        { "type": "flag_false", "path": "facts.procedure.collective_decision" }
+      ] },
+      "law": "《慈善法》第 14 条；民主决策要求见本组织章程与《慈善组织信息公开办法》第 14 条相关程序安排。",
+      "fix": "补开决策机构会议审议并形成决议文件；不得以负责人签批代替会议决议。",
+      "fields": ["facts.transaction.recognized_as_related", "facts.procedure.collective_decision"]
+    },
+    {
+      "id": "PR-003",
+      "category": "procedure",
+      "severity": "中",
+      "title": "回避与表决无留痕",
+      "desc": "回避已执行但缺少会议签到、回避声明、表决记录等证据材料。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.procedure.avoidance_done" },
+        { "type": "flag_false", "path": "facts.procedure.avoidance_recorded" }
+      ] },
+      "law": "《慈善法》第 14 条；《慈善组织信息公开办法》第 14 条。留痕为审计与评估的核查要点。",
+      "fix": "补齐签到表、回避声明与表决记录；此后按事项建立一事项一档的留痕规则。",
+      "fields": ["facts.procedure.avoidance_done", "facts.procedure.avoidance_recorded"]
+    },
+    {
+      "id": "PR-004",
+      "category": "procedure",
+      "severity": "中",
+      "title": "定价依据仅为双方协商",
+      "desc": "定价政策只有一句双方协商确定，无可比照的市价依据或独立说明。",
+      "condition": { "type": "flag_true", "path": "facts.procedure.pricing_only_negotiated" },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 88 条第十八项、第 90 条（定价政策为报表附注披露要素）；《慈善法》第 14 条（不得损害组织、受益人和社会公共利益）。",
+      "fix": "补充可比市价询价比对、第三方报价或独立说明，形成可追溯的定价底稿。",
+      "fields": ["facts.procedure.pricing_only_negotiated"]
+    },
+    {
+      "id": "PR-005",
+      "category": "procedure",
+      "severity": "中",
+      "title": "高价采购或低价处置财产",
+      "desc": "以明显过高价格采购关联方产品与服务，或以明显过低价格向关联方处置本组织财产。",
+      "condition": { "type": "any", "conds": [
+        { "type": "flag_true", "path": "facts.procedure.overpriced_purchase" },
+        { "type": "flag_true", "path": "facts.procedure.underpriced_disposal" }
+      ] },
+      "law": "《慈善法》第 14 条（不得利用关联关系损害慈善组织、受益人的利益和社会公共利益）；《民法典》第 94 条。",
+      "fix": "重新取得定价依据，对差价部分评估是否造成慈善财产损失；造成损失的按责任追究与损失挽回途径处理。",
+      "fields": ["facts.procedure.overpriced_purchase", "facts.procedure.underpriced_disposal"]
+    },
+    {
+      "id": "PR-006",
+      "category": "procedure",
+      "severity": "低",
+      "title": "未设立关联交易决策机构或专门评估机制",
+      "desc": "缺少专人对可能涉及关联交易的各项交易进行评估，程序执行依赖个人判断。",
+      "condition": { "type": "flag_false", "path": "facts.procedure.dedicated_body" },
+      "law": "《慈善法》第 14 条；决策程序安排见本组织章程。设立专门机构属管理建议，非强制要求。",
+      "fix": "可设立关联交易决策委员会并明确其评估权限与议事规则，或在现有理事会下设专门审议环节。",
+      "fields": ["facts.procedure.dedicated_body"]
+    },
+    {
+      "id": "DC-001",
+      "category": "disclosure",
+      "severity": "高",
+      "title": "交易发生后三十日内未公开",
+      "desc": "未在行为发生后三十日内于慈善信息公开平台公开具体内容和金额。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.transaction.recognized_as_related" },
+        { "type": "flag_false", "path": "facts.disclosure.disclosed_within_30d" }
+      ] },
+      "law": "《慈善组织信息公开办法》第 14 条（接受重要关联方捐赠、对其资助、共同投资、委托其投资、发生交易、其他资金往来，发生后三十日内公开具体内容和金额）。",
+      "fix": "即时补公开并保留公开截图与时间戳；此后将三十日时限纳入事项台账，逾期自动预警。",
+      "fields": ["facts.transaction.recognized_as_related", "facts.disclosure.disclosed_within_30d"]
+    },
+    {
+      "id": "DC-002",
+      "category": "disclosure",
+      "severity": "高",
+      "title": "未在 5 月 31 日前报送关联方名单",
+      "desc": "存在关联方但未在每年 5 月 31 日前向登记的民政部门报送关联方名单及关联关系说明。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.identification.has_related_party" },
+        { "type": "flag_false", "path": "facts.disclosure.annual_list_filed" }
+      ] },
+      "law": "《慈善组织信息公开办法》第 15 条。",
+      "fix": "补报并留存报送凭证；将 5 月 31 日列为年度固定节点写入年度工作日历。",
+      "fields": ["facts.identification.has_related_party", "facts.disclosure.annual_list_filed"]
+    },
+    {
+      "id": "DC-003",
+      "category": "disclosure",
+      "severity": "中",
+      "title": "以当年无交易为由跳过名单报送",
+      "desc": "误认为年度名单报送以发生交易为前提，未发生交易即不报送。",
+      "condition": { "type": "flag_true", "path": "facts.disclosure.skip_filing_because_no_transaction" },
+      "law": "《慈善组织信息公开办法》第 15 条（名单报送为独立年度义务，不以发生交易为前提）。",
+      "fix": "纠正认识：只要存在关联方，无论当年是否发生交易均须报送；补报并纳入年度节点管理。",
+      "fields": ["facts.disclosure.skip_filing_because_no_transaction"]
+    },
+    {
+      "id": "DC-004",
+      "category": "disclosure",
+      "severity": "中",
+      "title": "财报附注四项要素不齐",
+      "desc": "会计报表附注未完整披露关联方关系性质、交易类型、交易金额、未结算项目与定价政策。",
+      "condition": { "type": "flag_false", "path": "facts.disclosure.note_four_elements_complete" },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 88 条第十八项（会计报表附注：发生关联方交易的说明，含关联方关系的性质、交易类型及交易要素）；第 89、90 条。",
+      "fix": "按四项要素逐项补齐：关系性质、交易类型、交易金额（含未结算项目金额条款与条件、未结算应收项目坏账准备金额）、定价政策。",
+      "fields": ["facts.disclosure.note_four_elements_complete"]
+    },
+    {
+      "id": "DC-005",
+      "category": "disclosure",
+      "severity": "中",
+      "title": "定价政策未披露",
+      "desc": "财报附注中未披露定价政策，审计与评估环节易被追问。",
+      "condition": { "type": "flag_false", "path": "facts.disclosure.pricing_policy_disclosed" },
+      "law": "《民间非营利组织会计制度》（财会〔2024〕25 号）第 88 条第十八项、第 90 条（定价政策为交易要素的必备披露项）。",
+      "fix": "在附注中写明定价方法与依据来源，与定价底稿保持一致。",
+      "fields": ["facts.disclosure.pricing_policy_disclosed"]
+    },
+    {
+      "id": "DC-006",
+      "category": "disclosure",
+      "severity": "中",
+      "title": "三处口径不一致",
+      "desc": "年度工作报告、慈善信息公开平台、财务会计报告三处的关联方名单或金额不一致。",
+      "condition": { "type": "flag_false", "path": "facts.disclosure.three_sources_consistent" },
+      "law": "《慈善组织信息公开办法》第 14、15 条；《民间非营利组织会计制度》（财会〔2024〕25 号）第 89、90 条。",
+      "fix": "以同一份关联方台账作为三处唯一数据源，逐项比对差异后统一更正并留档。",
+      "fields": ["facts.disclosure.three_sources_consistent"]
+    },
+    {
+      "id": "DC-007",
+      "category": "disclosure",
+      "severity": "低",
+      "title": "重要关联方基本信息未按期公开",
+      "desc": "发起人、主要捐赠人、管理人员、被投资方及存在控制、共同控制或重大影响关系的个人或组织，未自形成之日起三十日内公开。",
+      "condition": { "type": "flag_false", "path": "facts.disclosure.basic_info_disclosed_within_30d" },
+      "law": "《慈善组织信息公开办法》第 4 条。",
+      "fix": "梳理重要关联方基本信息的形成日期，逐项补公开，并将变更触发的三十日公开纳入台账。",
+      "fields": ["facts.disclosure.basic_info_disclosed_within_30d"]
+    },
+    {
+      "id": "DC-008",
+      "category": "disclosure",
+      "severity": "低",
+      "title": "需更正但未公布更正说明",
+      "desc": "已公开信息需要更正，但未在平台填写并公布更正说明。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.disclosure.correction_needed" },
+        { "type": "flag_false", "path": "facts.disclosure.correction_published" }
+      ] },
+      "law": "《慈善组织信息公开办法》第 16 条。",
+      "fix": "在平台填写并公布更正说明；基本信息发生变更的，变更后三十日内公布。",
+      "fields": ["facts.disclosure.correction_needed", "facts.disclosure.correction_published"]
+    },
+    {
+      "id": "LB-001",
+      "category": "mechanism",
+      "severity": "中",
+      "title": "未制定关联交易管理制度",
+      "desc": "缺少关联交易管理制度，识别标准、决策权限与定价依据取得方式均未固化。",
+      "condition": { "type": "flag_false", "path": "facts.mechanism.policy_established" },
+      "law": "《慈善法》第 14 条；制度要求见本组织章程与登记管理机关的规范化管理要求。",
+      "fix": "制定管理办法并明确三项内容：重大资金数额标准、关联交易决策权限、定价依据取得方式。",
+      "fields": ["facts.mechanism.policy_established"]
+    },
+    {
+      "id": "LB-002",
+      "category": "mechanism",
+      "severity": "中",
+      "title": "未指定信息公开责任岗位",
+      "desc": "公开与报送事务无专人负责，时限节点容易落空。",
+      "condition": { "type": "flag_false", "path": "facts.mechanism.disclosure_owner_assigned" },
+      "law": "《慈善组织信息公开办法》第 14、15、16 条。",
+      "fix": "指定专人负责信息公开事务，按时完成公开与报送，并定期核对关联交易开展情况。",
+      "fields": ["facts.mechanism.disclosure_owner_assigned"]
+    },
+    {
+      "id": "LB-003",
+      "category": "mechanism",
+      "severity": "低",
+      "title": "章程未明确重大资金数额标准与决策权限",
+      "desc": "章程未规定重大资金数额标准与关联交易决策权限，主要捐赠人判定与审批层级缺乏依据。",
+      "condition": { "type": "flag_false", "path": "facts.mechanism.charter_threshold_defined" },
+      "law": "《慈善法》第 14 条；章程事项按本组织章程与登记管理机关要求办理。",
+      "fix": "在章程或管理办法中写明重大资金数额标准与各级决策权限，作为主要捐赠人判定与审批的依据。",
+      "fields": ["facts.mechanism.charter_threshold_defined"]
+    },
+    {
+      "id": "LB-004",
+      "category": "mechanism",
+      "severity": "高",
+      "title": "造成慈善财产损失但未启动挽回与责任追究",
+      "desc": "已因关联交易造成慈善财产损失，尚未启动损失挽回或责任追究程序。",
+      "condition": { "type": "all", "conds": [
+        { "type": "flag_true", "path": "facts.mechanism.property_loss" },
+        { "type": "flag_false", "path": "facts.mechanism.recovery_action" }
+      ] },
+      "law": "《慈善法》第 110 条第一项、第 112 条；《基金会管理条例》（2004 年国务院令第 400 号）第 43 条（理事赔偿责任）；《民法典》第 94 条（捐助人撤销权）。",
+      "fix": "两条可用途径：向参与决策的理事提出赔偿请求；请求人民法院撤销决定。同时按主管部门要求整改。具体以现行公布的规定与专业机构意见为准。",
+      "fields": ["facts.mechanism.property_loss", "facts.mechanism.recovery_action"]
+    }
+  ]
+}

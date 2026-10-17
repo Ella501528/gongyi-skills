@@ -1,0 +1,31 @@
+{
+ "skill": "gongyi-rule-origins",
+ "queries": [
+  {
+   "args": [
+    "--q",
+    "管理费用"
+   ],
+   "exit": 0,
+   "output_chars": 2473
+  },
+  {
+   "args": [
+    "--q",
+    "年检",
+    "--seg",
+    "变过"
+   ],
+   "exit": 0,
+   "output_chars": 71
+  },
+  {
+   "args": [
+    "--q",
+    "区块链"
+   ],
+   "exit": 0,
+   "output_chars": 358
+  }
+ ]
+}

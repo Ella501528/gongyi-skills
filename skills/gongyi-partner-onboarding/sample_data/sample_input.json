@@ -1,0 +1,51 @@
+{
+  "_说明": "本文件既是脚本输入样例，也是字段填表说明。partners 为合作方清单；带 '_' 前缀的键不参与判定。机构、公司均为虚构示例，名称以占位符表示。",
+  "org": { "name": "某公益基金会（示例）", "has_public_fundraising_qualification": true },
+  "partners": [
+    {
+      "id": "PT01", "name": "甲文具（示例）", "type": "企业", "role": "供应商",
+      "qualification_verified": true, "qualification_note": "营业执照已核",
+      "is_related_party": false, "related_party_handled": false,
+      "agreement_signed": true, "agreement_fields": ["权责", "资金走向", "成果归属", "宣传口径"],
+      "reconciled": true, "reconcile_last_date": "2026-09-30",
+      "publicity_confirmed": true, "publicity_scope_ok": true,
+      "evaluated": true, "evaluation_conclusion": "续约"
+    },
+    {
+      "id": "PT02", "name": "乙科技（示例）", "type": "企业", "role": "受资助方",
+      "qualification_verified": true, "qualification_note": "营业执照已核",
+      "is_related_party": false, "related_party_handled": false,
+      "agreement_signed": true, "agreement_fields": ["权责", "资金走向", "成果归属", "宣传口径"],
+      "reconciled": true, "reconcile_last_date": "2026-08-31",
+      "publicity_confirmed": true, "publicity_scope_ok": true,
+      "evaluated": true, "evaluation_conclusion": "续约"
+    },
+    {
+      "id": "PT03", "name": "丙服务中心（示例）", "type": "社会组织", "role": "服务提供方",
+      "qualification_verified": false, "qualification_note": "",
+      "is_related_party": false, "related_party_handled": false,
+      "agreement_signed": true, "agreement_fields": ["权责", "资金走向"],
+      "reconciled": false, "reconcile_last_date": "",
+      "publicity_confirmed": true, "publicity_scope_ok": true,
+      "evaluated": false, "evaluation_conclusion": ""
+    },
+    {
+      "id": "PT04", "name": "丁物资（示例）", "type": "企业", "role": "供应商",
+      "qualification_verified": true, "qualification_note": "营业执照已核",
+      "is_related_party": true, "related_party_handled": false,
+      "agreement_signed": false, "agreement_fields": [],
+      "reconciled": true, "reconcile_last_date": "2026-07-31",
+      "publicity_confirmed": true, "publicity_scope_ok": true,
+      "evaluated": true, "evaluation_conclusion": "有条件续约"
+    },
+    {
+      "id": "PT05", "name": "戊文化（示例）", "type": "企业", "role": "联合宣传方",
+      "qualification_verified": true, "qualification_note": "营业执照已核",
+      "is_related_party": false, "related_party_handled": false,
+      "agreement_signed": true, "agreement_fields": ["权责", "资金走向", "成果归属", "宣传口径"],
+      "reconciled": true, "reconcile_last_date": "2026-09-15",
+      "publicity_confirmed": false, "publicity_scope_ok": false,
+      "evaluated": true, "evaluation_conclusion": "续约"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "_说明": "本文件既是脚本输入样例，也是字段填表说明。activities 定义活动与岗位要求；assignments 定义具体人员安排。带 '_' 前缀的键不参与判定。活动、人员均为虚构示例，姓名仅留姓氏。",
+  "org": { "name": "某公益基金会（示例）" },
+  "activities": [
+    {
+      "id": "A001", "name": "山区夜间搜救支援", "risk_level": "高",
+      "requires_skill": true, "skill": "山地搜救",
+      "requires_cert": true, "cert": "急救员证",
+      "minor_allowed": false, "min_age": 18, "max_age": 60,
+      "notice_published": true,
+      "notice_fields": ["服务内容", "时间地点", "岗位要求", "风险提示", "保障条件", "报名方式", "联系人"]
+    },
+    {
+      "id": "A002", "name": "社区助老陪伴", "risk_level": "低",
+      "requires_skill": false, "skill": "",
+      "requires_cert": false, "cert": "",
+      "minor_allowed": true, "min_age": 14, "max_age": 75,
+      "notice_published": false,
+      "notice_fields": ["服务内容"]
+    },
+    {
+      "id": "A003", "name": "水域救援训练", "risk_level": "高",
+      "requires_skill": true, "skill": "水域救援",
+      "requires_cert": true, "cert": "水域救援证",
+      "minor_allowed": false, "min_age": 18, "max_age": 55,
+      "notice_published": true,
+      "notice_fields": ["服务内容", "时间地点", "岗位要求", "风险提示", "保障条件", "报名方式", "联系人"]
+    }
+  ],
+  "assignments": [
+    {
+      "activity_id": "A001", "volunteer_id": "V001", "volunteer_name": "张某某",
+      "age": 30, "is_minor": false, "health_note": "",
+      "skills": ["急救"], "certs": ["急救员证"], "trainings": ["急救基础"],
+      "risk_brief_signed": false, "agreement_signed": false,
+      "training_completed": true, "long_term": false
+    },
+    {
+      "activity_id": "A002", "volunteer_id": "V002", "volunteer_name": "李某某",
+      "age": 16, "is_minor": true, "health_note": "",
+      "skills": [], "certs": [], "trainings": ["岗前培训"],
+      "risk_brief_signed": true, "agreement_signed": false,
+      "training_completed": true, "long_term": false
+    },
+    {
+      "activity_id": "A001", "volunteer_id": "V003", "volunteer_name": "王某某",
+      "age": 17, "is_minor": true, "health_note": "",
+      "skills": [], "certs": [], "trainings": [],
+      "risk_brief_signed": true, "agreement_signed": false,
+      "training_completed": false, "long_term": false
+    },
+    {
+      "activity_id": "A003", "volunteer_id": "V004", "volunteer_name": "赵某某",
+      "age": 40, "is_minor": false, "health_note": "有心脏病史",
+      "skills": ["水域救援"], "certs": [], "trainings": ["水域救援培训"],
+      "risk_brief_signed": true, "agreement_signed": true,
+      "training_completed": true, "long_term": true
+    },
+    {
+      "activity_id": "A002", "volunteer_id": "V005", "volunteer_name": "孙某某",
+      "age": 20, "is_minor": false, "health_note": "",
+      "skills": [], "certs": [], "trainings": ["岗前培训"],
+      "risk_brief_signed": true, "agreement_signed": false,
+      "training_completed": true, "long_term": false
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "_说明": "本文件既是脚本输入样例，也是字段填表说明。字段口径见 SKILL.md 第一至三节；带 '_' 前缀的键不参与判定。志愿者、机构、社区均为虚构示例，证件号已做脱敏处理（V008 除外，用于演示 V8 规则）。",
+  "org": {
+    "name": "某公益基金会（示例）",
+    "record_lag_workdays": 10,
+    "system_registered_default": false
+  },
+  "roster_exported": true,
+  "system_registered": ["V001", "V002", "V003", "V004", "V005", "V007", "V008", "V009"],
+  "volunteers": [
+    {
+      "id": "V001", "name": "张某某", "gender": "女", "birth": "1990-05",
+      "id_type": "居民身份证", "id_no": "1101**********1234",
+      "area": "北京市", "contact": "138****0001",
+      "skills": "医疗护理", "service_category": "助老",
+      "training": ["岗前培训", "急救基础"],
+      "awards": "", "evaluation": "服务认真，与老人沟通良好",
+      "proof_requested": false,
+      "records": [
+        { "activity": "社区助老陪伴", "date": "2026-06-10", "location": "某街道社区",
+          "content": "陪伴聊天、协助用餐", "hours": 4, "organizer": "某公益基金会",
+          "leader": "李××", "recorded_on": "2026-06-12" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V002", "name": "李某", "gender": "男", "birth": "1988-11",
+      "id_type": "居民身份证", "id_no": "",
+      "area": "北京市", "contact": "138****0002",
+      "skills": "驾驶", "service_category": "物资运输",
+      "training": ["岗前培训"],
+      "awards": "", "evaluation": "",
+      "proof_requested": false,
+      "records": [
+        { "activity": "物资转运", "date": "2026-06-14", "location": "某仓库",
+          "content": "装车、短途运输", "hours": 5, "organizer": "某公益基金会",
+          "leader": "赵××", "recorded_on": "2026-06-15" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V003", "name": "王某", "gender": "女", "birth": "1995-02",
+      "id_type": "居民身份证", "id_no": "1101**********3344",
+      "area": "北京市", "contact": "138****0003",
+      "skills": "环境教育", "service_category": "环保",
+      "training": [], "awards": "", "evaluation": "",
+      "proof_requested": false,
+      "records": [
+        { "activity": "社区环保清洁", "date": "2026-06-15", "location": "某公园",
+          "content": "捡拾垃圾、分类指导", "hours": 3, "organizer": "某公益基金会",
+          "leader": "", "recorded_on": "2026-06-16" },
+        { "activity": "乡村植树", "date": "", "location": "某村",
+          "content": "植树", "hours": 3, "organizer": "某公益基金会",
+          "leader": "王××", "recorded_on": "2026-06-20" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V004", "name": "赵某", "gender": "男", "birth": "1982-07",
+      "id_type": "居民身份证", "id_no": "1101**********5566",
+      "area": "北京市", "contact": "138****0004",
+      "skills": "摄影", "service_category": "宣传",
+      "training": ["岗前培训"], "awards": "", "evaluation": "",
+      "proof_requested": false,
+      "records": [
+        { "activity": "救助现场影像记录", "date": "2026-08-01", "location": "某救助点",
+          "content": "现场拍摄与素材整理", "hours": 6, "organizer": "某公益基金会",
+          "leader": "钱××", "recorded_on": "2026-08-25" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V005", "name": "孙某", "gender": "女", "birth": "1999-09",
+      "id_type": "居民身份证", "id_no": "1101**********7788",
+      "area": "北京市", "contact": "138****0005",
+      "skills": "活动组织", "service_category": "综合",
+      "training": ["岗前培训"], "awards": "", "evaluation": "",
+      "proof_requested": false,
+      "records": [
+        { "activity": "公益市集", "date": "2026-07-01", "location": "某广场",
+          "content": "摊位协调", "hours": -2, "organizer": "某公益基金会",
+          "leader": "孙××", "recorded_on": "2026-07-02" },
+        { "activity": "公益市集", "date": "2026-07-02", "location": "某广场",
+          "content": "物资清点", "hours": 0, "organizer": "某公益基金会",
+          "leader": "孙××", "recorded_on": "2026-07-02" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V006", "name": "周某", "gender": "男", "birth": "1975-03",
+      "id_type": "居民身份证", "id_no": "1101**********9900",
+      "area": "北京市", "contact": "138****0006",
+      "skills": "中医推拿", "service_category": "义诊",
+      "training": ["岗前培训", "义诊规范"], "awards": "年度优秀志愿者", "evaluation": "手法熟练",
+      "proof_requested": false,
+      "records": [
+        { "activity": "社区义诊", "date": "2026-06-20", "location": "某社区服务站",
+          "content": "推拿服务", "hours": 5, "organizer": "某公益基金会",
+          "leader": "周××", "recorded_on": "2026-06-22" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V007", "name": "吴某", "gender": "女", "birth": "1993-12",
+      "id_type": "居民身份证", "id_no": "1101**********2233",
+      "area": "北京市", "contact": "138****0007",
+      "skills": "手语", "service_category": "助残",
+      "training": ["岗前培训", "手语培训"], "awards": "", "evaluation": "沟通耐心",
+      "proof_requested": true,
+      "records": [
+        { "activity": "听障儿童陪伴", "date": "2026-06-25", "location": "某特教学校",
+          "content": "陪读与游戏", "hours": 4, "organizer": "某公益基金会",
+          "leader": "吴××", "recorded_on": "2026-06-26" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V008", "name": "郑某", "gender": "男", "birth": "1980-08",
+      "id_type": "居民身份证", "id_no": "110101198008081234",
+      "area": "北京市", "contact": "138****0008",
+      "skills": "消防", "service_category": "安全",
+      "training": ["岗前培训"], "awards": "", "evaluation": "",
+      "proof_requested": false,
+      "records": [
+        { "activity": "防灾演练讲解", "date": "2026-06-28", "location": "某小学",
+          "content": "疏散演练指导", "hours": 3, "organizer": "某公益基金会",
+          "leader": "郑××", "recorded_on": "2026-06-29" }
+      ],
+      "proofs": []
+    },
+    {
+      "id": "V009", "name": "冯某", "gender": "女", "birth": "1987-06",
+      "id_type": "居民身份证", "id_no": "1101**********4455",
+      "area": "北京市", "contact": "138****0009",
+      "skills": "心理咨询", "service_category": "心理支持",
+      "training": ["岗前培训"], "awards": "", "evaluation": "",
+      "proof_requested": true,
+      "records": [
+        { "activity": "热线值守", "date": "2026-06-30", "location": "某热线中心",
+          "content": "来电倾听与转介", "hours": 8, "organizer": "某公益基金会",
+          "leader": "冯××", "recorded_on": "2026-07-01" }
+      ],
+      "proofs": [
+        { "issued_on": "2026-07-02", "hours": 20, "content": "",
+          "unit": "某公益基金会", "serial_no": "", "sealed": false }
+      ]
+    }
+  ]
+}

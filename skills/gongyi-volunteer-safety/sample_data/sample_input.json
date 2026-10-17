@@ -1,0 +1,46 @@
+{
+  "_说明": "本文件既是脚本输入样例，也是字段填表说明。activities 含活动风险与投保信息；participants 是当天实际参加人员；incidents 是出险记录。带 '_' 前缀的键不参与判定。活动、人员、保单均为虚构示例。",
+  "org": { "name": "某公益基金会（示例）", "min_coverage": 100000 },
+  "activities": [
+    {
+      "id": "A001", "name": "山地夜间搜救支援", "risk_level": "高",
+      "dangerous": true, "start_date": "2026-08-01",
+      "is_large_event": false, "organizer_insured": false,
+      "volunteer_bears_insurance_cost": true,
+      "insurance": {
+        "insured": true, "insured_on": "2026-08-05", "coverage": 50000,
+        "insurer": "某保险公司（示例）", "policy_no": "",
+        "insured_volunteer_ids": ["V001"], "voucher_kept": false
+      }
+    },
+    {
+      "id": "A002", "name": "大型公益徒步活动", "risk_level": "中",
+      "dangerous": false, "start_date": "2026-09-10",
+      "is_large_event": true, "organizer_insured": false,
+      "volunteer_bears_insurance_cost": false,
+      "insurance": { "insured": false, "insured_on": "", "coverage": null,
+        "insurer": "", "policy_no": "", "insured_volunteer_ids": [], "voucher_kept": false }
+    },
+    {
+      "id": "A003", "name": "水域救援训练", "risk_level": "高",
+      "dangerous": true, "start_date": "2026-07-20",
+      "is_large_event": false, "organizer_insured": false,
+      "volunteer_bears_insurance_cost": false,
+      "insurance": { "insured": false, "insured_on": "", "coverage": null,
+        "insurer": "", "policy_no": "", "insured_volunteer_ids": [], "voucher_kept": false }
+    }
+  ],
+  "participants": [
+    { "activity_id": "A001", "volunteer_id": "V001", "volunteer_name": "张某某" },
+    { "activity_id": "A001", "volunteer_id": "V002", "volunteer_name": "李某某" },
+    { "activity_id": "A002", "volunteer_id": "V003", "volunteer_name": "王某某" },
+    { "activity_id": "A003", "volunteer_id": "V004", "volunteer_name": "赵某某" }
+  ],
+  "incidents": [
+    {
+      "activity_id": "A001", "volunteer_id": "V005", "volunteer_name": "周某某",
+      "date": "2026-08-02", "desc": "夜间行进中扭伤脚踝",
+      "rescued": true, "record_kept": false, "claim_assisted": false
+    }
+  ]
+}

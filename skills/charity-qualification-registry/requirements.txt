@@ -1,0 +1,8 @@
+# 慈善资质名录库 · 运行依赖
+# 安装：pip install -r requirements.txt
+# 首次使用还需安装浏览器内核：playwright install chromium
+
+playwright      # 慈善中国取数（需 Chromium 内核）
+httpx           # 政府公告页抓取
+numpy           # 滑块缺口定位
+Pillow          # 滑块图像处理

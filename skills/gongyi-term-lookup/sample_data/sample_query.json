@@ -1,0 +1,38 @@
+{
+ "skill": "gongyi-term-lookup",
+ "queries": [
+  {
+   "args": [
+    "--q",
+    "公募"
+   ],
+   "exit": 0,
+   "output_chars": 520
+  },
+  {
+   "args": [
+    "--q",
+    "民非",
+    "--full"
+   ],
+   "exit": 0,
+   "output_chars": 182
+  },
+  {
+   "args": [
+    "--cat",
+    "治理"
+   ],
+   "exit": 0,
+   "output_chars": 3761
+  },
+  {
+   "args": [
+    "--q",
+    "区块链"
+   ],
+   "exit": 0,
+   "output_chars": 152
+  }
+ ]
+}
