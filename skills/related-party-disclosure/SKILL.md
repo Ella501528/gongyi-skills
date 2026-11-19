@@ -1,18 +1,12 @@
 ---
 name: related-party-disclosure
-slug: related-party-disclosure
-displayName: 慈善组织关联交易公开与责任
+description: 慈善组织关联交易信息公开与年度报送，以及违规后的责任界定与损失挽回。当要生成公开文本、核对时限节点、填报关联方名单或分析违规后果时使用。
 version: 1.2.1
 display_name: 慈善组织关联交易公开与责任
 display_name_en: Related Party Disclosure and Liability
-description: 慈善组织关联交易信息公开与年度报送，以及违规后的责任界定与损失挽回。当要生成公开文本、核对时限节点、填报关联方名单或分析违规后果时使用。
-summary: 关联交易公开时限与文本、年度关联方名单报送、三处口径一致性核查，以及违规后果与损失挽回途径。
 description_zh: 关联交易公开时限与文本、年度关联方名单报送、三处口径一致性核查，以及违规后果与损失挽回途径。
 description_en: Disclosure deadlines and texts, annual related-party list filing, cross-source consistency checks, and consequences of non-compliance.
-tags: [慈善组织, 关联交易, 信息公开, 年度报送]
-license: MIT
 ---
-
 
 # 慈善组织关联交易公开与责任
 
@@ -35,7 +29,7 @@ license: MIT
 
 **你要准备什么**
 
-一份按本包 `sample_data/sample_input.json` 结构填写的事实 JSON。本技能负责 `facts.disclosure` 分组，取值三态：`true`（存在或已完成）、`false`（不存在或未完成）、`null`（资料未取得）。
+一份按本技能 `sample_data/sample_input.json` 结构填写的事实 JSON。本技能负责 `facts.disclosure` 分组，取值三态：`true`（存在或已完成）、`false`（不存在或未完成）、`null`（资料未取得）。
 
 | 字段 | 采集什么 |
 |---|---|

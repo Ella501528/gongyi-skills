@@ -1,18 +1,12 @@
 ---
 name: related-party-transaction-review
-slug: related-party-transaction-review
-displayName: 慈善组织关联交易合规审查
+description: 慈善组织关联交易合规审查与合规体检。当发生与关联方的往来、需要判断是否构成关联交易、要履行回避与决策程序、审查定价公允性、处理高频疑难场景，或要带一叠材料做一次合规体检并出评分与 Excel 报告时使用。按四要件逐项核查并输出审查记录。
 version: 1.2.1
 display_name: 慈善组织关联交易合规审查
 display_name_en: Related Party Transaction Review
-description: 慈善组织关联交易合规审查与合规体检。当发生与关联方的往来、需要判断是否构成关联交易、要履行回避与决策程序、审查定价公允性、处理高频疑难场景，或要带一叠材料做一次合规体检并出评分与 Excel 报告时使用。按四要件逐项核查并输出审查记录。
-summary: 判断往来是否构成关联交易，逐项核查回避、决策、定价公允与披露四要件，处理高频场景。
 description_zh: 判断往来是否构成关联交易，逐项核查回避、决策、定价公允与披露四要件，处理高频场景。
 description_en: Determine whether a transaction is a related-party transaction and check the four compliance requirements item by item.
-tags: [慈善组织, 关联交易, 合规体检, 决策回避]
-license: MIT
 ---
-
 
 # 慈善组织关联交易合规审查
 
@@ -34,7 +28,7 @@ license: MIT
 
 **你要准备什么**
 
-一份按本包 `sample_data/sample_input.json` 结构填写的事实 JSON。本技能负责 `facts.transaction` 与 `facts.procedure` 两组字段，取值三态：`true`（存在或已完成）、`false`（不存在或未完成）、`null`（资料未取得）。
+一份按本技能 `sample_data/sample_input.json` 结构填写的事实 JSON。本技能负责 `facts.transaction` 与 `facts.procedure` 两组字段，取值三态：`true`（存在或已完成）、`false`（不存在或未完成）、`null`（资料未取得）。
 
 | 分组 | 字段 | 采集什么 |
 |---|---|---|

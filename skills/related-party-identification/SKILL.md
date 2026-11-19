@@ -1,18 +1,12 @@
 ---
 name: related-party-identification
-slug: related-party-identification
-displayName: 慈善组织关联方识别与登记
+description: 慈善组织关联方识别与登记。当用户要梳理关联方、判断某人或某机构是否构成关联方、判定主要捐赠人、建立关联方台账或台账报送时使用。按三套口径取并集，输出关联方名单与关系说明。
 version: 1.2.1
 display_name: 慈善组织关联方识别与登记
 display_name_en: Related Party Identification
-description: 慈善组织关联方识别与登记。当用户要梳理关联方、判断某人或某机构是否构成关联方、判定主要捐赠人、建立关联方台账或台账报送时使用。按三套口径取并集，输出关联方名单与关系说明。
-summary: 按三套口径识别关联方，判定主要捐赠人与关键管理人员，输出关联方名单及关系说明。
 description_zh: 按三套口径识别关联方，判定主要捐赠人与关键管理人员，输出关联方名单及关系说明。
 description_en: Identify related parties under three regulatory definitions and produce the related-party list and relationship description.
-tags: [慈善组织, 关联方, 关联交易, 合规台账]
-license: MIT
 ---
-
 
 # 慈善组织关联方识别与登记
 
@@ -34,7 +28,7 @@ license: MIT
 
 **你要准备什么**
 
-一份按本包 `sample_data/sample_input.json` 结构填写的事实 JSON。其中 `facts.identification` 分组由本技能负责采集，字段取值三态：`true`（存在或已完成）、`false`（不存在或已完成之外的否定）、`null`（资料未取得）。
+一份按本技能 `sample_data/sample_input.json` 结构填写的事实 JSON。其中 `facts.identification` 分组由本技能负责采集，字段取值三态：`true`（存在或已完成）、`false`（不存在或已完成之外的否定）、`null`（资料未取得）。
 
 | 字段 | 采集什么 |
 |---|---|

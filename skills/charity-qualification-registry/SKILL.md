@@ -1,7 +1,7 @@
 ---
 name: charity-qualification-registry
 description: "慈善领域各类资质名录的本地查询库：慈善组织登记认定、公开募捐资格、公益性捐赠税前扣除资格、非营利组织免税资格、社会组织评估等级、活动异常名录与严重违法失信名单等。当需要查某家基金会/社会团体/社会服务机构有没有某项资质、某项资质的最新名单里有没有它、它是否被列入异常名录或严重违法失信名单、某项资质在哪个年度批次内有效时使用。也用于把名录批量导出、比对某一批机构名单、跟踪名单的增删变化。"
-version: "1.0.0"
+version: "1.0.2"
 slug: charity-qualification-registry
 displayName: 慈善组织资质名录库
 summary: 慈善领域八类资质名录的本地可查库，支持自动抓取更新与变更追踪。
@@ -14,8 +14,7 @@ description_en: "A local queryable registry of charity-sector qualification list
 agent_created: true
 ---
 
-# 慈善资质名录库
-
+# 慈善组织资质名录库
 把散落在多个官方渠道的慈善资质名单，收进一个**本地 SQLite 库**，支持随时查询、定期更新、追踪变化。
 
 ## 它是什么、不是什么
